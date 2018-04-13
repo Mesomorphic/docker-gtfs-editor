@@ -1,0 +1,4 @@
+[submodule "gtfs-editor"]
+	path = gtfs-editor
+	url = https://github.com/Mesomorphic/gtfs-editor.git
+git

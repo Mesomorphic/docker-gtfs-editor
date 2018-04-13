@@ -1,0 +1,23 @@
+version: '3'
+services:
+  postgis:
+    image: mdillon/postgis:9.6-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: gtfs-editor
+      PGDATA: /var/lib/postgresql/data/gtfs-editor
+    volumes:
+      - /.database:/var/lib/postgresql/data
+  app:
+    build: .
+    restart: always
+    volumes:
+      - ./application.conf:/opt/gtfs-editor/conf/application.conf
+      - ./.public_data:/opt/gtfs-editor/public/data
+      - ./.data:/opt/gtfs-editor/data
+    ports:
+      - "80:9000"
+    depends_on:
+      - postgis
