@@ -17,4 +17,4 @@ git submodule init
 git submodule update
 ```
 
-Finally, run `docker-compose up` to run it.
+Finally, run `docker-compose up -d` to run it.
